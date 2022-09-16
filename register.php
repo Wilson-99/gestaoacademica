@@ -2,11 +2,13 @@
 ob_start();//armazena os dados em cash
 session_start();
 
-$user_id = $_SESSION['user_id'];
-
-if(!isset($user_id)){
-   header('Location: ../index.php');
+if(isset($_SESSION['user_id'])){
+  header('Location: users/home.php');
 }
+if(isset($_SESSION['admin_id'])){
+ header('Location: admin/admin_page');
+}
+
 include 'connect/connect.php';
 
 if(isset($_POST['submit'])){
